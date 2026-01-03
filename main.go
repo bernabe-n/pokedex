@@ -17,6 +17,24 @@ func main() {
 
 	commands := map[string]cliCommand{}
 
+	cfg := &config{}
+
+	commands["map"] = cliCommand{
+		name:        "map",
+		description: "Show location areas (next page)",
+		callback: func() error {
+			return commandMap(cfg)
+		},
+	}
+
+	commands["mapb"] = cliCommand{
+		name:        "mapb",
+		description: "Show location areas (previous page)",
+		callback: func() error {
+			return commandMapBack(cfg)
+		},
+	}
+
 	commands["exit"] = cliCommand{
 		name:        "exit",
 		description: "Exit the Pokedex",
